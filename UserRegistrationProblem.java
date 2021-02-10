@@ -1,26 +1,50 @@
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-public class FirstName {
-
-	public static void main(String[] args) {
-		
+public class UserRegistration
+{
+	public static void main(String[] args)
+	{
 		System.out.println("WELCOME TO USER REGISTRATION PAGE");
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the first Name");
-		String FirstName = sc.nextLine();
-		String regexPattern ="^[A-Z]{1}[a-z]{2,}$";
-		Pattern p = Pattern.compile(regexPattern);
-		Matcher m = p.matcher(FirstName);
-		if(m.matches())
-		{
-			System.out.println("First Name is Valid");
-		}
-		
-	else
-	{
-		System.out.println("First Name is Invalid");
+		System.out.println("Enter first name: ");
+		String firstname = sc.nextLine();
+		System.out.println("Enter last name: ");
+		String lastname = sc.nextLine();
+		System.out.println("Enter e-mail address: ");
+		String email = sc.nextLine();
+		validateFirstName(firstname);
+		validateLastName(lastname);
+		validateEmail(email);
 	}
-}
+	static void validateFirstName(String firstname)
+	{
+		String regexPattern = "^[A-Z][a-z]{2,}$";
+		Pattern p = Pattern.compile(regexPattern);
+		Matcher m = p.matcher(firstname);
+		if(m.matches())
+			System.out.println("Valid first name");
+		else
+			System.out.println("Invalid first name");
+	}
+	static void validateLastName(String lastname)
+	{
+		String regexPattern = "^[A-Z][a-z]{2,}$";
+		Pattern p = Pattern.compile(regexPattern);
+		Matcher m = p.matcher(lastname);
+		if(m.matches())
+			System.out.println("Valid last name");
+		else
+			System.out.println("Invalid last name");
+	}
+	static void validateEmail(String email)
+	{
+		String regexPattern = "^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$";
+		Pattern p = Pattern.compile(regexPattern);
+		Matcher m = p.matcher(email);
+		if(m.matches())
+			System.out.println("Valid e-mail address");
+		else
+			System.out.println("Invalid e-mail address");
+	}
 }
